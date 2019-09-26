@@ -1,4 +1,4 @@
-package com.faon.netty_4;
+package com.faon.netty_5;
 
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -18,7 +18,7 @@ public class MyServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class).
                     handler(new LoggingHandler(LogLevel.INFO)).
-                    childHandler(new MyServerInitializer());
+                    childHandler(new WebSocketChannelInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();

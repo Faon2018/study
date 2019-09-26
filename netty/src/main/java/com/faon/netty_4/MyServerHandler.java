@@ -23,6 +23,9 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
                     eventType = "读写空闲";
                     break;
             }
+
+            System.out.println(ctx.channel().remoteAddress()+"超时事件"+eventType);
+            ctx.channel().close();
         }
     }
 }
